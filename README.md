@@ -1,4 +1,4 @@
-# 🧠 MLLMEraser 2026
+# ✨ MLLMEraser 2026
 
 Code for **MLLMEraser: Achieving Test-Time Unlearning in Multimodal Large Language Models through Activation Steering** (NeurIPS 2026).
 
