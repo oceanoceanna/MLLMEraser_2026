@@ -1,5 +1,7 @@
 # MLLMEraser 2026
 
+Code for **MLLMEraser: Achieving Test-Time Unlearning in Multimodal Large Language Models through Activation Steering** (NeurIPS 2026).
+
 After installing dependencies and preparing the model and datasets below, run the complete LLaVA experiment with:
 
 ```bash
@@ -54,8 +56,6 @@ CUDA_VISIBLE_DEVICES=0 TRAIN_CUDA_VISIBLE_DEVICES=0,1 \
 MODEL_PATH=/path/to/LLaVA_Vanilla DATA_DIR=/path/to/MLLMU-Bench \
 TRAIN_DATA_DIR=/path/to/baseline_train_split bash llava.sh
 ```
-
-`FORGET_RATIO` defaults to 10. `SUBSPACE_RATIO`, `RIDGE_LAMBDA`, `BATCH_SIZE`, `BETA`, `LEARNING_RATE`, `NUM_EPOCHS`, `SAVE_DIR`, `MATRIX_PATH`, and `LOG_DIR` can also override the pipeline defaults. Scripts check the model/data directories first and stop immediately on failure. Activate the corresponding Python environment before running them. Qwen uses the same variables with `bash qwen.sh`. With two training GPUs visible, the trainable model and frozen reference model are placed on separate GPUs; training uses one process unless launched explicitly with Accelerate.
 
 ---
 
@@ -202,19 +202,3 @@ Below explains what each task measures and which direction is desirable.
   (model should no longer recall forgotten information)
 - **Retain/Real Sets** → **Higher is better**
   (model should maintain factual and contextual reasoning)
-
-
-
-### **Implementation Notes**
-
-**Regenerate refusal vectors, embeddings, and steering matrices together after this cleanup.** The old refusal vectors used decoder outputs while the fitting/inference path used decoder inputs; the old LLaVA embeddings could also select padding tokens. Layer 17 is now included in matrix fitting by default. Corrected NPO loss reduction changes training behavior, so old and new experiment results should be kept separate.
-
-The matrix objective and tensor conventions are documented in `newcode/null_space_util.py`, and the NPO loss in `lib/npo.py`.
-
-Check launcher syntax with:
-
-```bash
-bash -n llava.sh qwen.sh
-```
-
-Full 7B-model GPU experiments require the prepared checkpoints, datasets, and enough GPU memory. The scripts support Linux with Python 3.10 and the corresponding requirements file.
