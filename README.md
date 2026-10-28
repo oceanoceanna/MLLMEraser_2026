@@ -1,4 +1,4 @@
-# MLLMEraser 2026
+# 🧠 MLLMEraser 2026
 
 Code for **MLLMEraser: Achieving Test-Time Unlearning in Multimodal Large Language Models through Activation Steering** (NeurIPS 2026).
 
@@ -10,14 +10,14 @@ bash llava.sh
 
 `llava.sh` contains the full workflow directly. For Qwen, use `bash qwen.sh`.
 
-### **Environment**
+### ⚙️ **Environment**
 
 - Use **`requirements-llava.txt`** for **LLaVA-1.5-7B**.
 - Use **`requirements-qwen.txt`** for **Qwen-2.5-VL-7B**. **`requirements-qwen-flash-attn.txt`** is an optional second step for FlashAttention.
 
 ---
 
-### **Prepare the Data and the Vanilla Models**
+### 📦 **Prepare the Data and the Vanilla Models**
 
 Prepare the following models and datasets:
 
@@ -59,7 +59,7 @@ TRAIN_DATA_DIR=/path/to/baseline_train_split bash llava.sh
 
 ---
 
-### **Final Directory Structure**
+### 📁 **Final Directory Structure**
 
 After preparing the vanilla models and datasets, the project directory should look like:
 
@@ -85,7 +85,7 @@ This structure ensures that all training, evaluation, and steering scripts can c
 
 ---
 
-### **Experiments**
+### 🚀 **Experiments**
 
 #### **1. Run LLaVA Experiments**
 
@@ -134,7 +134,7 @@ Both scripts will perform **test-time unlearning** and evaluate model behavior o
 
 ---
 
-### **Evaluation Metrics Explanation**
+### 📊 **Evaluation Metrics Explanation**
 
 After running the experiments, the output will appear in the following format:
 
