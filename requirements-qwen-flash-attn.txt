@@ -1,0 +1,14 @@
+# Optional second-stage Qwen dependency: install requirements-qwen.txt FIRST.
+# Required only when explicitly using --attn_implementation flash_attention_2.
+# FlashAttention builds import torch, so do not combine these two files in
+# one pip invocation and do not add this file with -r to the main requirements.
+# Linux x86_64; supported NVIDIA GPU (Ampere/Ada/Hopper); CUDA toolkit with
+# nvcc (CUDA 12.4 recommended to match torch) and a working C++ compiler.
+# The NVIDIA runtime wheels in the main file do not provide nvcc.
+#
+# python -m pip install setuptools==78.1.1 wheel==0.45.1 ninja==1.11.1.4
+# MAX_JOBS=4 python -m pip install --no-build-isolation -r requirements-qwen-flash-attn.txt
+#
+# Official installation prerequisites:
+# https://github.com/Dao-AILab/flash-attention/tree/v2.7.4.post1#installation-and-features
+flash-attn==2.7.4.post1
